@@ -1,36 +1,241 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alya & Raka Wedding Invitation
 
-## Getting Started
+Website undangan pernikahan digital yang dibuat dengan gaya editorial, elegan, dan modern. Desainnya mengambil nuansa warna krem, gold, hitam, dan visual wedding yang lembut, dengan animasi halus supaya halaman terasa hidup saat dibuka.
 
-First, run the development server:
+Project ini cocok untuk undangan nikah online, landing page acara, atau template portfolio frontend berbasis Next.js dan Tailwind CSS.
+
+## Preview
+
+Halaman utama berisi:
+
+- Hero invitation dengan frame besar dan foto wedding
+- Musik background dengan tombol play/pause
+- Cursor kupu-kupu dengan animated trail di desktop
+- Section Our Journey dengan timeline cerita
+- Halaman detail perjalanan terpisah di `/journey`
+- Event details untuk akad dan resepsi
+- RSVP form
+- Footer credit pembuat
+
+## Tech Stack
+
+Project ini dibuat menggunakan:
+
+- **Next.js 16**: framework React untuk routing, build, dan rendering
+- **React 19**: library UI berbasis component
+- **TypeScript**: typing untuk kode yang lebih aman dan rapi
+- **Tailwind CSS 4**: styling utility-first
+- **CSS Custom Animation**: animasi hero, reveal, hover, cursor kupu-kupu, dan trail
+- **Next Font / Geist**: font bawaan dari setup Next.js
+
+## Struktur Project
+
+```text
+undangan-nikah/
+├─ app/
+│  ├─ components/
+│  │  ├─ ButterflyCursor.tsx
+│  │  └─ WeddingMusic.tsx
+│  ├─ journey/
+│  │  └─ page.tsx
+│  ├─ globals.css
+│  ├─ layout.tsx
+│  └─ page.tsx
+├─ public/
+│  └─ when-god-made-you.mp3
+├─ package.json
+└─ README.md
+```
+
+## Pages
+
+### `/`
+
+Halaman utama undangan pernikahan. Di dalamnya ada hero, story timeline, event details, RSVP, musik, dan footer.
+
+### `/journey`
+
+Halaman tambahan untuk cerita yang lebih panjang. Dibuat terpisah agar halaman utama tetap clean dan tidak terlalu penuh.
+
+## Fitur Utama
+
+### Animated Wedding Hero
+
+Hero section memakai visual wedding dengan frame besar, overlay lembut, teks nama pasangan, tanggal, dan lokasi acara.
+
+### Background Music
+
+Musik disimpan di:
+
+```text
+public/when-god-made-you.mp3
+```
+
+Komponen musik berada di:
+
+```text
+app/components/WeddingMusic.tsx
+```
+
+Browser modern bisa memblokir autoplay suara. Karena itu, musik akan mencoba autoplay, lalu tetap bisa diputar lewat tombol play/pause di kanan bawah.
+
+### Butterfly Cursor
+
+Cursor desktop diganti menjadi kupu-kupu dengan trail animasi. Fitur ini otomatis nonaktif di perangkat touch/mobile agar tidak mengganggu pengalaman pengguna.
+
+Komponen:
+
+```text
+app/components/ButterflyCursor.tsx
+```
+
+### Journey Detail Page
+
+Route `/journey` menampilkan cerita yang lebih panjang dalam bentuk card visual dengan foto, timeline line, highlight label, dan responsive mobile layout.
+
+### Responsive Design
+
+Website sudah dibuat responsive untuk:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+## Cara Menjalankan Project
+
+Pastikan Node.js sudah terinstall. Disarankan menggunakan Node.js versi terbaru LTS.
+
+### 1. Masuk ke folder project
+
+```bash
+cd undangan-nikah
+```
+
+Jika posisi terminal masih di folder induk:
+
+```bash
+cd "D:\NGODING BRUTAL\Undangan nikah\undangan-nikah"
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Jalankan development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Lalu buka:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Halaman journey:
 
-## Learn More
+```text
+http://localhost:3000/journey
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Script yang Tersedia
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+Menjalankan server lokal untuk development.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Lint
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+```
+
+Mengecek kualitas kode dengan ESLint.
+
+### Production Build
+
+```bash
+npm run build
+```
+
+Membuat build production dan mengecek error TypeScript/Next.js.
+
+### Start Production
+
+```bash
+npm run start
+```
+
+Menjalankan hasil build production. Jalankan `npm run build` terlebih dahulu.
+
+## Cara Mengganti Data Undangan
+
+Edit file:
+
+```text
+app/page.tsx
+```
+
+Bagian yang bisa diganti:
+
+- Nama pasangan
+- Tanggal acara
+- Lokasi acara
+- Cerita perjalanan
+- Detail akad/resepsi
+- Link RSVP
+
+Untuk halaman cerita tambahan, edit:
+
+```text
+app/journey/page.tsx
+```
+
+## Cara Mengganti Lagu
+
+Ganti file:
+
+```text
+public/when-god-made-you.mp3
+```
+
+Pastikan nama file tetap sama, atau ubah path audio di:
+
+```text
+app/components/WeddingMusic.tsx
+```
+
+## Deployment
+
+Project ini bisa dideploy ke Vercel.
+
+Langkah singkat:
+
+1. Push project ke GitHub
+2. Buka Vercel
+3. Import repository
+4. Framework akan terdeteksi sebagai Next.js
+5. Klik Deploy
+
+## Credit
+
+Dibuat oleh:
+
+```text
+Jonathan Hamonangan Saragih
+Email: saragihjonathan80@gmail.com
+Instagram: @jonathans.sa
+GitHub: jonathanhsa
+```
+
+## License
+
+Project ini dibuat untuk kebutuhan website undangan pernikahan digital dan pembelajaran frontend.
